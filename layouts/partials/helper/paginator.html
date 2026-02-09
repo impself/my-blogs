@@ -1,0 +1,23 @@
+{{- $pages := slice -}}
+{{- $paginator := "" -}}
+
+{{- if .IsHome -}}
+    {{- $sections := default (slice "post") .Site.Params.mainSections -}}
+    {{- $pages = where .Site.RegularPages "Section" "in" $sections -}}
+    {{- $pages = where $pages "Params.hidden" "!=" true -}}
+    {{- $paginator = .Paginate $pages -}}
+{{- else if eq .Kind "term" -}}
+    {{- $pages = where .Pages "Params.hidden" "!=" true -}}
+    {{- $paginator = .Paginate $pages -}}
+{{- else if or (eq .Kind "section") (eq .Kind "taxonomy") -}}
+    {{- $subsections := .Sections -}}
+    {{- $pages = .Pages | complement $subsections -}}
+    {{- $pages = where $pages "Params.hidden" "!=" true -}}
+
+    {{- if eq (len $pages) 0 -}}
+        {{- $pages = $subsections -}}
+    {{- end -}}
+    {{- $paginator = .Paginate $pages -}}
+{{- end -}}
+
+{{- return $paginator -}}

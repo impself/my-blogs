@@ -1,0 +1,28 @@
+[[social]]
+    identifier = "github"
+    name       = "GitHub"
+    url        = "https://github.com/impself"
+    weight = 1
+    [social.params]
+        icon = "brand-github"
+[[social]]
+    identifier = "Google"
+    name       = "Google"
+    url        = "https://google.com"
+    weight = 2
+    [social.params]
+        icon = "brand-google"
+[[social]]
+    identifier = "Douyin"
+    name       = "Douyin"
+    url        = "https://v.douyin.com/TfK7Cbs7r-8/"
+    weight = 3
+    [social.params]
+        icon = "brand-tiktok"
+[[social]]
+    identifier = "Bilibili"
+    name       = "Bilibili"
+    url        = "https://space.bilibili.com/1262668861"
+    weight = 3
+    [social.params]
+        icon = "brand-bilibili"

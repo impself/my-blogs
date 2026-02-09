@@ -1,0 +1,7 @@
+baseURL = 'https://impself.github.io/'
+languageCode = 'zh-cn'
+defaultContentLanguage = "zh-cn"
+[Languages.zh-cn]
+  languageCode = "zh-cn"
+title = 'My New Hugo Site'
+theme = 'hugo-theme-stack'

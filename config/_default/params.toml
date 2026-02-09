@@ -1,0 +1,32 @@
+mainSections   = ["post"]
+rssFullContent = true
+favicon        = "img/you2.jpg"
+
+[footer]
+    since = 2026
+
+[sidebar]
+    emoji    = "🤖"
+    subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    [sidebar.avatar]
+        enabled = true
+        src     = "img/you2.jpg"
+
+[article]
+    [article.license]
+        enabled = true
+        default = "Licensed under CC BY-NC-SA 4.0"
+
+[widgets]
+    homepage = [
+        { type = "search" },
+        { type = "archives", params = { limit = 5 } },
+        { type = "categories", params = { limit = 10 } },
+        { type = "tag-cloud", params = { limit = 10 } },
+    ]
+    page = [{ type = "toc" }]
+
+[comments]
+    # See complete configuration in config/_default/params.toml
+    enabled  = true
+    provider = "disqus"

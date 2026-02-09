@@ -1,0 +1,89 @@
+{{ define "body-class" }}article-page about-page{{ end }}
+
+{{ define "main" }}
+<section class="about-hero">
+    <div class="about-hero-card">
+        <div class="about-hero-top">
+            <span>{{ default "👋" .Params.hero.emoji }}</span>
+            <span>{{ default "Hey, I'm" .Params.hero.greeting }}</span>
+        </div>
+        <h1 class="about-name">{{ default .Title .Params.hero.name }}</h1>
+        {{ with .Params.hero.tagline }}<p class="about-tagline">{{ . }}</p>{{ end }}
+        {{ with .Params.hero.badges }}
+        <div class="about-badges">
+            {{ range . }}
+                <span class="about-badge">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+{{ with .Params.projects }}
+<section class="about-section">
+    <h2 class="about-section-title">🚀 我的作品 & 链接</h2>
+    <div class="about-grid">
+        {{ range . }}
+        <a class="about-card" href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener"{{ end }}>
+            <div class="about-card-title">{{ .icon }} {{ .title }}</div>
+            {{ with .desc }}<p class="about-card-desc">{{ . }}</p>{{ end }}
+        </a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+<section class="about-section about-two-col">
+    {{ with .Params.profile }}
+    <div class="about-card">
+        <h3 class="about-section-title">😊 关于我</h3>
+        <div class="about-list">
+            {{ range . }}
+            <div class="about-list-item">
+                <span class="about-list-key">{{ .label }}</span>
+                <span>{{ .value }}</span>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ with .Params.site }}
+    <div class="about-card">
+        <h3 class="about-section-title">🏠 关于网站</h3>
+        <div class="about-list">
+            {{ range . }}
+            <div class="about-list-item">
+                <span class="about-list-key">{{ .label }}</span>
+                <span>{{ .value }}</span>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</section>
+
+{{ with .Params.timeline }}
+<section class="about-section">
+    <h2 class="about-section-title">🧭 建站历程</h2>
+    <div class="about-timeline">
+        {{ range . }}
+        <div class="about-timeline-item">
+            <div class="about-timeline-date">{{ .date }}</div>
+            <div>{{ .text }}</div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+{{ if .Content }}
+<section class="about-content">
+    {{ .Content }}
+</section>
+{{ end }}
+
+{{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}{{ end }}
