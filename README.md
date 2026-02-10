@@ -180,3 +180,48 @@ Markdown 负责内容，模板负责结构，SCSS/CSS 负责样式，Hugo 把它
 - Front matter 必须以 `---` 开头并以 `---` 结束。
 - 报错优先检查 `layouts/` 覆盖逻辑。
 - 主题模块缓存位于 `~/.hugo_cache`，需要覆盖时请用 `layouts/`。
+
+## 项目学习地图（快速上手）
+
+这是一个 Hugo + Stack 主题的多语言静态博客项目，核心思路是“内容数据驱动页面”。
+
+### 1. 技术栈与入口
+
+- 站点配置入口：`config/_default/hugo.toml`
+- 主题来源：`github.com/CaiJimmy/hugo-theme-stack/v3`（见 `go.mod`）
+- 构建输出目录：`public/`
+
+### 2. 关键目录职责
+
+- `content/`：文章与页面内容（Markdown + front matter）
+- `config/_default/`：全局配置（语言、菜单、参数、渲染）
+- `layouts/`：本地模板覆写（优先级高于主题）
+- `assets/scss/`：自定义样式源（Hugo Pipes 编译）
+- `themes/hugo-theme-stack/`：主题原始实现（尽量不直接改）
+
+### 3. 当前仓库已做定制
+
+- About 页面模板：`layouts/page/about.html`
+- About 页面数据：`content/page/about/index*.md`
+- 自定义样式：`assets/scss/custom.scss`
+- 头部注入（字体 + CSS）：`layouts/partials/head/custom.html`
+- 分页逻辑覆写：`layouts/partials/helper/paginator.html`
+
+### 4. 多语言结构
+
+- 语言配置：`config/_default/languages.toml`（`zh-cn/en/zh-hant-tw/ja`）
+- 首页语言入口：`content/_index.zh-cn.md`、`content/_index.md`
+- 页面内容示例：`content/page/search/index.zh-cn.md`、`content/page/links/index.zh-cn.md`
+- 文章内容示例：`content/post/Markdown Syntax/index.md`
+
+### 5. 推荐学习顺序
+
+1. 先读 `config/_default/hugo.toml`、`config/_default/params.toml`、`config/_default/languages.toml`
+2. 对照阅读 `content/page/about/index.zh-cn.md` 与 `layouts/page/about.html`
+3. 阅读 `assets/scss/custom.scss`，理解样式接入
+4. 阅读 `content/post/...` front matter（`tags/categories/image/slug`）
+
+### 6. 常用命令
+
+- 开发预览：`hugo server --disableFastRender`
+- 生产构建：`hugo`

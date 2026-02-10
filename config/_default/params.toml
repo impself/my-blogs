@@ -19,10 +19,12 @@ favicon        = "img/you2.jpg"
 
 [widgets]
     homepage = [
-        { type = "search" },
+        
         { type = "archives", params = { limit = 5 } },
+        { type = "search" },
         { type = "categories", params = { limit = 10 } },
         { type = "tag-cloud", params = { limit = 10 } },
+        { type = "about" },
     ]
     page = [{ type = "toc" }]
 

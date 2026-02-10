@@ -7,37 +7,25 @@ layout: "about"
 slug: "about"
 menu:
   main:
-    weight: -20
+    weight: -90
     params:
       icon: user
 hero:
   emoji: "👋"
   greeting: "Hey, I'm"
   name: "impself"
-  tagline: "Go学长 / 网络空间安全研究生 / 业余健身爱好者"
-  badges:
-  - text: Golang
-    url: https://go.dev
-    external: true
-  - text: Python
-    url: https://www.python.org
-    external: true
-  - text: TypeScript
-    url: https://www.typescriptlang.org
-    external: true
-  - text: C++
-    url: https://isocpp.org
-    external: true
+  tagline: "Go 码农 / Agent开发者"
+  badges: ["Golang", "Python", "TypeScript", "C++"]
 projects:
   - title: "GitHub 主页"
     icon: "🐙"
     desc: "分享我的代码与开源项目"
     url: "https://github.com/impself"
     external: true
-  - title: "一个优质前端组件网站"
-    icon: "✨"
-    desc: "各种前端组件样式"
-    url: "https://uiverse.io/elements"
+  - title: "我的画廊"
+    icon: "📷"
+    desc: "AI 作品与摄影集"
+    url: "https://example.com/gallery"
     external: true
   - title: "价格计算器"
     icon: "🧮"
@@ -46,26 +34,20 @@ projects:
     external: true
 profile:
   - label: "职业"
-    value: "研究生"
-  - label: "地址"
-    value: "北雷村男子职业技术学院"
+    value: "Go 码农"
   - label: "爱好"
-    value: "健身 / 游戏 / 小说"
+    value: "游戏 / 骑行 / 登山"
   - label: "技术栈"
     value: "Golang / Python / TypeScript / C++"
-  
+  - label: "邮箱"
+    value: "ruotong00@gmail.com"
   - label: "目标"
     value: "赚钱"
 site:
   - label: "框架"
     value: "Hugo"
-    url: "https://gohugo.io/"
-    external: true
   - label: "主题"
     value: "Hugo Stack"
-    url: "https://stack.jimmycai.com/"
-    external: true
-    
   - label: "评论"
     value: "待定"
   - label: "部署"

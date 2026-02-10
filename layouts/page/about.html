@@ -4,7 +4,7 @@
 <section class="about-hero">
     <div class="about-hero-card">
         <div class="about-hero-top">
-            <span>{{ default "👋" .Params.hero.emoji }}</span>
+            <span class="about-hero-emoji">{{ default "👋" .Params.hero.emoji }}</span>
             <span>{{ default "Hey, I'm" .Params.hero.greeting }}</span>
         </div>
         <h1 class="about-name">{{ default .Title .Params.hero.name }}</h1>
@@ -12,7 +12,12 @@
         {{ with .Params.hero.badges }}
         <div class="about-badges">
             {{ range . }}
-                <span class="about-badge">{{ . }}</span>
+                {{ if .url }}
+                    <a class="about-badge" href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener" {{ end }}>{{ .text }}</a>
+                {{ else }}
+                    <span class="about-badge">{{ .text }}</span>
+            <!-- <span class="about-badge">{{ . }}</span> -->
+                {{ end }}
             {{ end }}
         </div>
         {{ end }}
@@ -21,11 +26,14 @@
 
 {{ with .Params.projects }}
 <section class="about-section">
-    <h2 class="about-section-title">🚀 我的作品 & 链接</h2>
+    <h2 class="about-section-title">🚀 我的作品 & 小链接</h2>
     <div class="about-grid">
         {{ range . }}
-        <a class="about-card" href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener"{{ end }}>
-            <div class="about-card-title">{{ .icon }} {{ .title }}</div>
+        <a class="about-card" href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener" {{ end }}>
+            <div class="about-card-title">
+                <span>{{ .icon }} {{ .title }}</span>
+                <span class="about-card-arrow">↗</span>
+            </div>
             {{ with .desc }}<p class="about-card-desc">{{ . }}</p>{{ end }}
         </a>
         {{ end }}
@@ -36,12 +44,12 @@
 <section class="about-section about-two-col">
     {{ with .Params.profile }}
     <div class="about-card">
-        <h3 class="about-section-title">😊 关于我</h3>
+        <h3 class="about-section-title">👨 关于我</h3>
         <div class="about-list">
             {{ range . }}
             <div class="about-list-item">
                 <span class="about-list-key">{{ .label }}</span>
-                <span>{{ .value }}</span>
+                <span class="about-list-value">{{ .value }}</span>
             </div>
             {{ end }}
         </div>
@@ -55,7 +63,11 @@
             {{ range . }}
             <div class="about-list-item">
                 <span class="about-list-key">{{ .label }}</span>
-                <span>{{ .value }}</span>
+                {{ if .url }}
+                <a class="about-link about-list-value" href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener" {{ end }}>{{ .value }}</a>
+                {{ else }}
+                <span class="about-list-value">{{ .value }}</span>
+                {{ end }}
             </div>
             {{ end }}
         </div>
@@ -70,7 +82,7 @@
         {{ range . }}
         <div class="about-timeline-item">
             <div class="about-timeline-date">{{ .date }}</div>
-            <div>{{ .text }}</div>
+            <div class="about-timeline-text">{{ .text }}</div>
         </div>
         {{ end }}
     </div>
